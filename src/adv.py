@@ -40,9 +40,19 @@ room['treasure'].s_to = room['narrow']
 
 # Make a new player object that is currently in the 'outside' room.
 
-player = Player('Chris', 'Outside')
-print(player)
-print(repr(player))
+chris = Player('Chris', 'outside')
+print(chris)
+print(repr(chris))
+
+def current_room(player):
+    for i in room:
+        if player.room == i:
+            return f'{room[i]}'
+
+print(current_room(chris))
+player_choice = input('Enter a direction to move: ')
+
+
 
 # Write a loop that:
 #
