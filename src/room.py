@@ -5,9 +5,10 @@ class Room:
     def __init__(self, name, description):
         self.name = name
         self.description = description
+        self.n_to = False
 
     def __str__(self):
-        return f'Room name: {self.name}\nRoom description: {self.description}'
+        return f'{self.name}\n{self.description}'
 
     def __repr__(self):
         return f'Room({repr(self.name)}, {repr(self.description)})'

@@ -44,24 +44,38 @@ room['treasure'].s_to = room['narrow']
 exited = False
 
 
-player = Player('outside')
-current_room = room[f'{player.room}']
-print(current_room)
-player_choice = input('Enter n, s, e or w: ')
+player = Player(room['outside'])
 
-while not player_choice is 'q':
-    # break
-    if player_choice[0] == 'n' and hasattr(current_room, 'n_to'):
-        player.change_room(player.room.n_to)
-    elif player_choice[0] == 's' and hasattr(current_room, 's_to'):
-        player.change_room(player.room.s_to)
-    elif player_choice[0] == 'e' and hasattr(current_room, 'e_to'):
-        player.change_room(player.room.e_to)
-    elif player_choice[0] == 'w' and hasattr(current_room, 'w_to'):
-        player.change_room(player.room.w_to)
+while exited is False:
+    print(player.room)
+    player_choice = input('Enter n, s, e or w (or q to quit): ')
+    if player_choice == 'n':
+        if player.room.n_to:
+            player.change_room(player.room.n_to)
+        else:
+            print('Please enter a valid direction')
+    if player_choice == 's':
+        if player.room.s_to:
+            player.change_room(player.room.s_to)
+        else:
+            print('Please enter a valid direction')
+    if player_choice == 'e':
+        if player.room.e_to:
+            player.change_room(player.room.e_to)
+        else:
+            print('Please enter a valid direction')
+    if player_choice == 'w':
+        if player.room.w_to:
+            player.change_room(player.room.w_to)
+        else:
+            print('Please enter a valid direction')
+    elif player_choice == 'q':
+        exited = True
+        print('Thanks for playing!')
     else:
-        print('Please enter a valid direction')
+        print(f'Please enter a valid direction')
 
+# prompt after each input
 
 # Write a loop that:
 #
