@@ -1,4 +1,5 @@
 from room import Room
+from player import Player
 
 # Declare all the rooms
 
@@ -38,6 +39,43 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
+
+
+exited = False
+
+
+player = Player(room['outside'])
+
+while exited is False:
+    print(player.room)
+    player_choice = input('Enter n, s, e or w (or q to quit): ')
+    if player_choice == 'n':
+        if player.room.n_to:
+            player.change_room(player.room.n_to)
+        else:
+            print('Please enter a valid direction')
+    if player_choice == 's':
+        if player.room.s_to:
+            player.change_room(player.room.s_to)
+        else:
+            print('Please enter a valid direction')
+    if player_choice == 'e':
+        if player.room.e_to:
+            player.change_room(player.room.e_to)
+        else:
+            print('Please enter a valid direction')
+    if player_choice == 'w':
+        if player.room.w_to:
+            player.change_room(player.room.w_to)
+        else:
+            print('Please enter a valid direction')
+    elif player_choice == 'q':
+        exited = True
+        print('Thanks for playing!')
+    else:
+        print(f'Please enter a valid direction')
+
+# prompt after each input
 
 # Write a loop that:
 #
