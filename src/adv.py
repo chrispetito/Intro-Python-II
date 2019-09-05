@@ -40,18 +40,27 @@ room['treasure'].s_to = room['narrow']
 
 # Make a new player object that is currently in the 'outside' room.
 
-chris = Player('Chris', 'outside')
-print(chris)
-print(repr(chris))
 
-def current_room(player):
-    for i in room:
-        if player.room == i:
-            return f'{room[i]}'
+exited = False
 
-print(current_room(chris))
-player_choice = input('Enter a direction to move: ')
 
+player = Player('outside')
+current_room = room[f'{player.room}']
+print(current_room)
+player_choice = input('Enter n, s, e or w: ')
+
+while not player_choice is 'q':
+    # break
+    if player_choice[0] == 'n' and hasattr(current_room, 'n_to'):
+        player.change_room(player.room.n_to)
+    elif player_choice[0] == 's' and hasattr(current_room, 's_to'):
+        player.change_room(player.room.s_to)
+    elif player_choice[0] == 'e' and hasattr(current_room, 'e_to'):
+        player.change_room(player.room.e_to)
+    elif player_choice[0] == 'w' and hasattr(current_room, 'w_to'):
+        player.change_room(player.room.w_to)
+    else:
+        print('Please enter a valid direction')
 
 
 # Write a loop that:
